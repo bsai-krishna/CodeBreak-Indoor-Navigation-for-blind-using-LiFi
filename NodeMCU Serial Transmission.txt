@@ -1,0 +1,22 @@
+#include <SoftwareSerial.h>
+
+SoftwareSerial mySerial(D2, D3); // RX, TX
+
+void setup(){
+mySerial.begin(1200);    
+Serial.begin(1200);
+}
+
+void loop(){
+  
+  if (mySerial.available())
+  {
+    Serial.write(mySerial.read());
+  }
+  
+  if(Serial.available())
+  {
+    mySerial.write(Serial.read()); 
+  }
+  
+}
